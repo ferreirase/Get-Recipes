@@ -13,10 +13,7 @@ async function getOneGif(recipe: string): Promise<string> {
 
     return gif;
   } catch (error) {
-    throw new AppError({
-      message: 'Serviço de busca de Gifs não disponível',
-      statusCode: 400,
-    });
+    throw new AppError({ message: error.message, statusCode: 400 });
   }
 }
 

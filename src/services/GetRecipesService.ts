@@ -20,10 +20,7 @@ async function getOneGif(keywords: string | undefined): Promise<Array<Recipe>> {
 
     return recipes;
   } catch (error) {
-    throw new AppError({
-      message: 'Serviço de busca de Receitas não disponível',
-      statusCode: 400,
-    });
+    throw new AppError({ message: error.message, statusCode: 400 });
   }
 }
 
