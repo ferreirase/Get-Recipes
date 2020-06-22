@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
 import AppError from '../errors/AppError';
@@ -21,27 +22,30 @@ interface RecipeModel {
 async function formatRecipe(
   keywords: string | undefined,
 ): Promise<Array<Recipe>> {
-  const recipesFormated: Array<Recipe> = [];
-  const recipes = await getRecipes(keywords);
   try {
-    for (let index = 0; index < recipes.length; index++) {
-      recipesFormated.push(
-        new Recipe({
-          title: recipes[index].title.trim(),
-          ingredients: recipes[index].ingredients
-            .toString()
-            .split(',')
-            .map((ingredient: string) => ingredient.trim())
-            .sort((a, b) => {
-              if (a < b) return -1;
-              if (a > b) return 1;
-              return 0;
-            }),
-          link: recipes[index].href,
-          gif: await getOneGif(recipes[index].title), // gfisURL[index],
-        }),
-      );
-    }
+    const recipesFormated: Array<Recipe> = [];
+
+    const recipes = await getRecipes(keywords);
+    await Promise.all(
+      recipes.map(async recipe =>
+        recipesFormated.push(
+          new Recipe({
+            title: recipe.title.trim(),
+            ingredients: recipe.ingredients
+              .toString()
+              .split(',')
+              .map(ingredient => ingredient.trim())
+              .sort((a, b) => {
+                if (a < b) return -1;
+                if (a > b) return 1;
+                return 0;
+              }),
+            link: recipe.href,
+            gif: await getOneGif(recipe.title),
+          }),
+        ),
+      ),
+    );
 
     return recipesFormated;
   } catch (error) {
