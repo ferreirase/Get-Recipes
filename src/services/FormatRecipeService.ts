@@ -9,16 +9,6 @@ import getOneGif from './GetOneGifService';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
-interface RecipeModel {
-  title: string;
-
-  ingredients: Array<string>;
-
-  href: string;
-
-  thumbnail: string;
-}
-
 async function formatRecipe(
   keywords: string | undefined,
 ): Promise<Array<Recipe>> {
