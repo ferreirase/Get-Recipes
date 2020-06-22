@@ -34,5 +34,6 @@ const HOST = '0.0.0.0';
 const PORT = 3333;
 
 app.listen(PORT, HOST);
+console.log(`server is running on http://${HOST}:${PORT}`);
 
 export default app;
