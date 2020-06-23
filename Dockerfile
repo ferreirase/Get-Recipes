@@ -1,13 +1,16 @@
-FROM node:alpine
+FROM node:10.15.3-alpine
 
-WORKDIR /usr/app
+WORKDIR /home/node/app
 
-COPY package*.json /
+COPY package*.json ./
+ADD package*.json ./
 
-RUN yarn
+RUN npm i
 
 COPY . .
 
 EXPOSE 3333
 
-CMD [ "yarn", "dev"]
+USER node
+
+CMD ["npm", "run", "dev", "--host", "0.0.0.0"]
