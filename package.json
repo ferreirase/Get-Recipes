@@ -9,9 +9,7 @@
 		"axios": "^0.19.2",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
-		"express-async-errors": "^3.1.1"
-	},
-	"devDependencies": {
+		"express-async-errors": "^3.1.1",
 		"@types/chai": "^4.2.11",
 		"@types/mocha": "^7.0.2",
 		"@typescript-eslint/eslint-plugin": "^3.0.2",
@@ -37,7 +35,7 @@
     "start": "nodemon --inspect=5858 -r ts-node/register ./src/server.ts",
     "start:watch": "nodemon",
     "build": "tsc",
-    "dev": "ts-node-dev src/server.ts",
+    "dev": "ts-node-dev --poll --respawn --transpileOnly ./src/server.ts",
 		"test": "nyc mocha -r ts-node/register src/tests/recipe.spec.ts"
 	}
 }
