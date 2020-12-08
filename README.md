@@ -63,6 +63,18 @@ A resposta dessa requisição é devolvida com a seguinte estrutura:
 }
 ```
 
+### :wrench: Arquivo de configuração
+
+*``` As variáveis de ambiente e configuração estão presentes no arquivo ".env" na raiz do projeto. ```*
+
+**VARIÁVEIS**
+
+- *``` API_KEY_GIPHY ```*: é a sua chave de API para poder acessar a API do **[Giphy](https://developers.giphy.com/docs/)**. Entre no site, cadastre-se e lá você deve gerar essa chave. Com ela em mãos, é só informar neste campo no arquivo ".env".
+
+- *``` BASE_URL_GIFS ```*: é a URL base da API do **[Giphy](https://developers.giphy.com/docs/)**. 
+
+- *``` BASE_URL_RECIPES ```*: é a URL base da API do **[RecipePuppy](http://www.recipepuppy.com/about/api/)**. 
+
 
 
 ### :cd: Rodando a aplicação!
@@ -75,18 +87,6 @@ A resposta dessa requisição é devolvida com a seguinte estrutura:
   3. Pronto, seu servidor backend está no ar e pronto pra ser acessado no endereço "http://localhost:3333". 
   
   Para pesquisar na API, no browser e/ou em algum outro cliente, acesse [http://localhost:3333/recipes/?i=onion,tomato](http://localhost:3333/recipes/?i=onion,tomato) e vá mudando os ingredientes no parâmetro "i" da URL e busque outras receitas. 
-
-### :wrench: Arquivo de configuração
-
-*``` As variáveis de ambiente e configuração estão presentes no arquivo ".env" na raiz do projeto. ```*
-
-**VARIÁVEIS**
-
-- *``` API_KEY_GIPHY ```*: é a sua chave de API para poder acessar a API do **[Giphy](https://developers.giphy.com/docs/)**. Entre no site, cadastre-se e lá você deve gerar essa chave. Com ela em mãos, é só informar neste campo no arquivo ".env".
-
-- *``` BASE_URL_GIFS ```*: é a URL base da API do **[Giphy](https://developers.giphy.com/docs/)**. 
-
-- *``` BASE_URL_RECIPES ```*: é a URL base da API do **[RecipePuppy](http://www.recipepuppy.com/about/api/)**. 
 
 
 ### :mag_right: Específicação dos testes
