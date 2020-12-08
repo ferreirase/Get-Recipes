@@ -1,27 +1,30 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import axios from 'axios';
 import AppError from '../errors/AppError';
+import formatRecipesService from './FormatRecipeService';
 
 interface Recipe {
   title: string;
 
   ingredients: Array<string>;
 
-  href: string;
+  link: string;
 
-  thumbnail: string;
+  gif: string;
 }
 
-async function getOneGif(keywords: string | undefined): Promise<Array<Recipe>> {
+async function getRecipes(
+  keywords: string | undefined,
+): Promise<Array<Recipe>> {
   try {
     const recipes = await axios
       .get(`${process.env.BASE_URL_RECIPES}?i=${keywords}`)
       .then(res => res.data.results);
 
-    return recipes;
+    return await formatRecipesService(recipes);
   } catch (error) {
     throw new AppError({ message: error.message, statusCode: 400 });
   }
 }
 
-export default getOneGif;
+export default getRecipes;

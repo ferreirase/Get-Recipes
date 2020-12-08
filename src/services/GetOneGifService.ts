@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import axios from 'axios';
 import AppError from '../errors/AppError';
+
+// eslint-disable-next-line no-unused-expressions
+require('dotenv').config;
 
 async function getOneGif(title: string): Promise<string> {
   try {
@@ -9,7 +13,7 @@ async function getOneGif(title: string): Promise<string> {
           process.env.API_KEY_GIPHY
         }&q=${title.trim()}`,
       )
-      .then(response => response.data.data[0].url);
+      .then(response => response.data.data[0].images.original.url);
 
     return gif;
   } catch (error) {
